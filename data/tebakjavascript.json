@@ -1,0 +1,158 @@
+[
+  {
+    "soal": "Bagaimana cara mendeklarasikan variabel di JavaScript?",
+    "jawaban": "Let"
+  },
+  {
+    "soal": "Apa perbedaan antara `null` dan `undefined` di JavaScript?",
+    "jawaban": "Type"
+  },
+  {
+    "soal": "Bagaimana caramengecek apakah sebuah variabel telah dideklarasikan di JavaScript?",
+    "jawaban": "In"
+  },
+  {
+    "soal": "Apa itu JSON?",
+    "jawaban": "Format"
+  },
+  {
+    "soal": "Bagaimana cara mengkonversi string JSON menjadi objek JavaScript?",
+    "jawaban": "Parse"
+  },
+  {
+    "soal": "Apa itu deserialization?",
+    "jawaban": "Parse"
+  },
+  {
+    "soal": "Bagaimana cara mengakses data dalam objek JSON?",
+    "jawaban": "Dot"
+  },
+  {
+    "soal": "Apa itu serialization?",
+    "jawaban": "Stringify"
+  },
+  {
+    "soal": "Bagaimana cara membuat objek JSON?",
+    "jawaban": "Object"
+  },
+  {
+    "soal": "Apa itu array di JavaScript?",
+    "jawaban": "Collection"
+  },
+  {
+    "soal": "Bagaimana cara membuat array di JavaScript?",
+    "jawaban": "Bracket"
+  },
+  {
+    "soal": "Apa itu fungsi di JavaScript?",
+    "jawaban": "Block"
+  },
+  {
+    "soal": "Bagaimana cara membuat fungsi di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Apa itu event di JavaScript?",
+    "jawaban": "Trigger"
+  },
+  {
+    "soal": "Bagaimana cara menangani event di JavaScript?",
+    "jawaban": "Listener"
+  },
+  {
+    "soal": "Apa itu DOM di JavaScript?",
+    "jawaban": "Model"
+  },
+  {
+    "soal": "Bagaimana cara mengakses elemen HTML menggunakan JavaScript?",
+    "jawaban": "Query"
+  },
+  {
+    "soal": "Apa itu this di JavaScript?",
+    "jawaban": "Context"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan this di JavaScript?",
+    "jawaban": "Reference"
+  },
+  {
+    "soal": "Apa itu async/await di JavaScript?",
+    "jawaban": "Asynchronous"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan async/await di JavaScript?",
+    "jawaban": "Await"
+  },
+  {
+    "soal": "Apa itu promise di JavaScript?",
+    "jawaban": "Async"
+  },
+  {
+    "soal": "Bagaimana cara membuat promise di JavaScript?",
+    "jawaban": "New"
+  },
+  {
+    "soal": "Apa itu callback di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan callback di JavaScript?",
+    "jawaban": "Pass"
+  },
+  {
+    "soal": "Apa itu closure di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara membuat closure di JavaScript?",
+    "jawaban": "Return"
+  },
+  {
+    "soal": "Apa itu higher-order function di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan higher-order function di JavaScript?",
+    "jawaban": "Pass"
+  },
+  {
+    "soal": "Apa itu currying di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan currying di JavaScript?",
+    "jawaban": "Return"
+  },
+  {
+    "soal": "Apa itu destructuring di JavaScript?",
+    "jawaban": "Assignment"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan destructuring di JavaScript?",
+    "jawaban": "Syntax"
+  },
+  {
+    "soal": "Apa itu spread operator di JavaScript?",
+    "jawaban": "Syntax"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan spread operator di JavaScript?",
+    "jawaban": "Array"
+  },
+  {
+    "soal": "Apa itu rest parameter di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan rest parameter di JavaScript?",
+    "jawaban": "Syntax"
+  },
+  {
+    "soal": "Apa itu default parameter di JavaScript?",
+    "jawaban": "Function"
+  },
+  {
+    "soal": "Bagaimana cara menggunakan default parameter di JavaScript?",
+    "jawaban": "Syntax"
+  }
+]
