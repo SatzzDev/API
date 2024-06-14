@@ -1,7 +1,4 @@
-{
-  status:"ok",
-  creator:"SatganzDevs",
-  result: [
+[
 "https://pbs.twimg.com/media/GQAwsNjW0AAm-Ef?format=jpg&name=large",
 "https://pbs.twimg.com/media/GP7izrNXsAAr6dl?format=jpg&name=large",
 "https://pbs.twimg.com/media/GP2YYwBXMAAsNlP?format=jpg&name=large",
@@ -106,4 +103,3 @@
 "https://pbs.twimg.com/media/GPQ0Ft2WMAA56SE?format=jpg&name=large",
 "https://pbs.twimg.com/media/GPQZUXKXYAAySWM?format=jpg&name=large"
 ]
-}
