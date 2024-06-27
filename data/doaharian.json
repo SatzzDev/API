@@ -239,9 +239,16 @@
   },
   {
     "index": 35,
-    "title": "Doa akan Mandi",
+    "title": "Doa Akan Mandi",
     "arabic": "اَللّٰهُمَّ اغْفِرْلِى ذَنْبِى وَوَسِّعْ لِى فِىْ دَارِىْ وَبَارِكْ لِىْ فِىْ رِزْقِىْ",
     "latin": "Alloohummaghfirlii dzambii wa wassi'lii fii daarii wa baarik lii fii rizqii",
     "translation": "Ya Allah ampunilah dosa kesalahanku dan berilah keluasaan di rumahku serta berkahilah pada rezekiku"
+  },
+  {
+    "index": 36,
+    "title": "Doa Untuk Kedua Orang Tua",
+    "arabic": "اَللّهُمَّ اغْفِرْلِيْ وَلِوَالِدَيَّ وَارْحَمْهُمَاكَمَارَبَّيَانِيْ صَغِيْرَا",
+    "latin": "Allahumma firlii wa liwaa lidhayya warham humaa kamaa rabbayaa nii shaghiraa.",
+    "translation": "Wahai Tuhanku. ampunilah aku dan kedua orang tuaku (ibu dan Bapakku), sayangilah mereka seperti mereka menyayangiku waktu aku kecil"
   }
 ]
