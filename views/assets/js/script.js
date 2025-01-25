@@ -15,15 +15,6 @@ document.getElementById("hour").style=`--value:${h%12||12};`
 document.getElementById("ampm").textContent=h>=12?"PM":"AM";
 }, 100);
 
-setInterval(() => {
-fetch('/uptime').then(r=>r.json().then(res=>{
-document.getElementById("uphours").style=`--value:${res.hours}`;
-document.getElementById("upminutes").style=`--value:${res.minutes}`;
-document.getElementById("upseconds").style=`--value:${res.seconds}`;
-}))
-}, 1000);
-
-
 
 let audio = new Audio("/Mr. Loverman.mp3")
 audio.load()
