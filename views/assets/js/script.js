@@ -24,8 +24,5 @@ if (!isPlaying) {
 audio.play()
 isPlaying = true
 } else {
-//console.log('its playing!')
 }
 }
-
-new ClipboardJS('.btn');
