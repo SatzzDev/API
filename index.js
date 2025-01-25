@@ -78,18 +78,6 @@ next();
 });
 
 //━━━━━━━━━━━━━━━[ Routes ]━━━━━━━━━━━━━━━━━//
-app.get("/uptime", (req, res) => res.json(formatUptime(process.uptime())));
-
-app.get("/status", (req, res) => {
-res.json({
-platform: os.platform(),
-cpu_model: os.cpus()[0].model,
-free_ram: (os.freemem() / Math.pow(1024, 3)).toFixed(2) + " GB",
-ram: (os.totalmem() / Math.pow(1024, 3)).toFixed(2) + " GB",
-runtime: formatUptime(process.uptime()),
-request: requestCount
-});
-});
 
 app.use("/api", apiRoutes);
 const menuItems = JSON.parse(fs.readFileSync(path.join(__dirname, 'menu.json'), 'utf8'));
