@@ -7,6 +7,10 @@ typeSpeed: 70,
 backSpeed:70,
 loop: true
 });
+
+
+
+
 setInterval(() => {
 const now=new Date(),s=now.getSeconds(),m=now.getMinutes(),h=now.getHours();
 document.getElementById("second").style=`--value:${s};`
