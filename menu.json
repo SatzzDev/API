@@ -1,0 +1,61 @@
+[
+  {
+    "name": "AI",
+    "icon": "h-5 w-5 mdi mdi-robot-happy-outline",
+    "submenu": [
+      { "label": "SatzzAI", "link": "/api/satzzai?text=siapa%20anda" },
+      { "label": "Upscaler", "link": "/api/upscaler?url=" }
+    ]
+  },
+  {
+    "name": "Downloader",
+    "icon": "mdi mdi-arrow-down-circle-outline",
+    "submenu": [
+      {
+        "label": "Youtube MP3",
+        "link": "/api/ytmp3?url=https://youtu.be/eEssr98eFjw"
+      },
+      {
+        "label": "Youtube MP4",
+        "link": "/api/ytmp4?url=https://youtu.be/eEssr98eFjw"
+      },
+      { "label": "Spotify", "link": "/api/spotifydl" },
+      { "label": "Pinterest", "link": "/api/pinterest/download" },
+      { "label": "Mediafire", "link": "/api/mediafire" },
+      { "label": "Instagram", "link": "/api/igdl" }
+    ]
+  },
+  {
+    "name": "Search",
+    "icon": "mdi mdi-magnify",
+    "submenu": [
+      {
+        "label": "Youtube Play",
+        "link": "/api/ytplay?query=somebody's pleasure extended version"
+      },
+      {
+        "label": "Youtube Search",
+        "link": "/api/yts?query=somebody's%20pleasure extended version"
+      },
+      {
+        "label": "Spotify Search",
+        "link": "/api/spotify?query=somebody's%20pleasure extended version"
+      },
+      {
+        "label": "Pinterest Search",
+        "link": "/api/pinterest/search?query=siesta%20icon"
+      },
+      { "label": "Wallpaper", "link": "/api/wallpaper?query=digital art" },
+      { "label": "xnxxsearch", "link": "/api/xnxxsearch?query=step mom" }
+    ]
+  },
+  {
+    "name": "Islamic",
+    "icon": "mdi mdi-star-crescent",
+    "submenu": [
+      { "label": "Jadwal Sholat", "link": "/api/jadwal-sholat?kota=pekanbaru" },
+      { "label": "Quran Surah", "link": "/api/surah/1" },
+      { "label": "Quran Ayat", "link": "/api/surah-ayat/17/32" }
+    ]
+  }
+]
