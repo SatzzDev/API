@@ -30,11 +30,11 @@ audio.play();
 isPlaying = true;
 if ("mediaSession" in navigator) {
 navigator.mediaSession.metadata = new MediaMetadata({
-title: "DJ LALA BEATLOOP MP CLUB PEKANBARU 2025",
-artist: "Amii15❤️‍🔥🔞",
+title: "AURA",
+artist: "Ogryzek",
 artwork: [
 {
-src: "https://i1.sndcdn.com/artworks-OigZ6pxEcEutaWIF-7Az9tQ-t500x500.jpg",
+src: "https://i1.sndcdn.com/artworks-8QaW8oJBjUPJ-0-t500x500.jpg",
 type: "image/jpeg",
 sizes: "500x500", 
 }
