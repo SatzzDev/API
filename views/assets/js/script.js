@@ -45,8 +45,8 @@ navigator.mediaSession.setActionHandler('pause', () => audio.pause());
 navigator.mediaSession.setActionHandler('stop', () => audio.pause());
 }
 } else {
-audio.pause();
-isPlaying = false;
+//audio.pause();
+//isPlaying = false;
 }
 }
 
