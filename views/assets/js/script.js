@@ -20,13 +20,34 @@ document.getElementById("ampm").textContent=h>=12?"PM":"AM";
 }, 100);
 
 
-let audio = new Audio("/Mr. Loverman.mp3")
-audio.load()
-let isPlaying = false
+let audio = new Audio("/output.mp3");
+audio.load();
+let isPlaying = false;
+audio.addEventListener("ended", () => isPlaying = false); 
 async function playBackSounds() {
 if (!isPlaying) {
-audio.play()
-isPlaying = true
+audio.play();
+isPlaying = true;
+if ("mediaSession" in navigator) {
+navigator.mediaSession.metadata = new MediaMetadata({
+title: "DJ LALA BEATLOOP MP CLUB PEKANBARU 2025",
+artist: "Amii15❤️‍🔥🔞",
+artwork: [
+{
+src: "https://i1.sndcdn.com/artworks-OigZ6pxEcEutaWIF-7Az9tQ-t500x500.jpg",
+type: "image/jpeg",
+sizes: "500x500", 
+}
+],
+});
+navigator.mediaSession.setActionHandler('play', () => audio.play());
+navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+navigator.mediaSession.setActionHandler('stop', () => audio.pause());
+}
 } else {
+audio.pause();
+isPlaying = false;
 }
 }
+
+

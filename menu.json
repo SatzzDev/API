@@ -4,7 +4,8 @@
     "icon": "h-5 w-5 mdi mdi-robot-happy-outline",
     "submenu": [
       { "label": "SatzzAI", "link": "/api/satzzai?text=siapa%20anda" },
-      { "label": "Upscaler", "link": "/api/upscaler?url=" }
+      { "label": "Upscaler", "link": "/api/upscaler?url=" },
+      { "label": "Background Remover", "link": "/api/removebg?url=" }
     ]
   },
   {
@@ -20,6 +21,7 @@
         "link": "/api/ytmp4?url=https://youtu.be/eEssr98eFjw"
       },
       { "label": "Spotify", "link": "/api/spotifydl" },
+      { "label": "SoundCloud", "link": "/api/soundclouddl" },
       { "label": "Pinterest", "link": "/api/pinterest/download" },
       { "label": "Mediafire", "link": "/api/mediafire" },
       { "label": "Instagram", "link": "/api/igdl" }
@@ -35,11 +37,15 @@
       },
       {
         "label": "Youtube Search",
-        "link": "/api/yts?query=somebody's%20pleasure extended version"
+        "link": "/api/yts?query=take that patience"
       },
       {
         "label": "Spotify Search",
-        "link": "/api/spotify?query=somebody's%20pleasure extended version"
+        "link": "/api/spotify?query=chandelier"
+      },
+      {
+        "label": "SoundCloud Search",
+        "link": "/api/soundcloud?query=DJ LALA BEATLOOP MP CLUB PEKANBARU 2025"
       },
       {
         "label": "Pinterest Search",

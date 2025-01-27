@@ -13,11 +13,13 @@ import { instaDL } from './utils/instagram.js';
 import { mediafire } from './utils/mediafire.js';
 import { xnxxsearch, xnxxdl } from './utils/xnxx.js';
 import { findKodeDaerah, jadwalSholat } from "./utils/jadwal-sholat.js";
-import { SatzzAI } from './utils/ai.js';
+import { chatbot } from './utils/ai.js';
 import { ytmp3, ytmp4, transcript, search } from './utils/ytdl.js'
 import { spotifySearch, spotifydl } from './utils/spotify.js';
 import yts from 'yt-search';
 import { Upscale } from './utils/upscale.js';
+import { removebg } from './utils/removebg.js';
+import SoundCloud from './utils/soundcloud.js';
 
 
 
@@ -62,15 +64,6 @@ console.error("Error in getBuffer:", err.message);
 throw new Error(`Failed to fetch buffer from URL: ${url}. ${err.message}`);
 }
 };
-
-
-
-
-
-
-
-
-
 
 
 
@@ -155,9 +148,9 @@ res.json(r)
 //━━━━━━━━━━[ ALL AI ]━━━━━━━━━━━━//
 router.get('/satzzAI', async(req, res) => {
 try {
-const { text } = req.query;
+const { text, model } = req.query;
 if (!text) return res.status(400).send({ status: 400, message: "[ ! ] mising query parameter text" });
-const response = await SatzzAI(text);
+const response = await chatbot.send(text, model ? model : 'gpt-3.5-turbo');
 res.status(200).json({
 status: 200,
 creator: "@krniwnstria",
@@ -185,7 +178,20 @@ res.status(500).json({ status: false, creator: "@krniwnstria", message: "Interna
 });
 
 
-
+router.get("/removebg", async (req, res) => {
+try {
+const { url } = req.query;
+if (!url) return res.status(400).json({ status: false, creator: "@krniwnstria", message: "missing parameter url." });
+const b = await getBuffer(url)
+const sr = await removebg(b);
+let r = await getBuffer(sr)
+res.set({ "Content-Type": "image/png", "Content-Length": r.length });
+res.send(r);
+} catch (error) {
+console.error("Error in /removebg:", error.message);
+res.status(500).json({ status: false, creator: "@krniwnstria", message: "Internal Server Error", error: error.message });
+}
+});
 
 
 
@@ -267,6 +273,15 @@ data,
 
 
 //━━━━━━━━━━[ ALL SEARCH ]━━━━━━━━━━━━//
+router.get("/soundcloud", async(req, res) => {
+var { query } = req.query;
+if (!query) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter query.'})
+let r = await SoundCloud.search(query)
+res.json(r)
+})
+
+
+
 router.get("/yts", async(req, res) => {
 var { query } = req.query;
 if (!query) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter query.'})
@@ -350,6 +365,7 @@ break
 
 
 
+
 //━━━━━━━━━━[ ALL DOWNLOADER ]━━━━━━━━━━━━//
 router.get("/ytmp3", async(req, res) => {
 var { url } = req.query;
@@ -418,9 +434,10 @@ status: false,
 creator: "@krniwnstria",
 message: "[ ! ] mising query parameter url!",
 });
-let riss = await soundcloud(url);
+let riss = await SoundCloud.download(url);
 res.status(200).json(riss)
 });
+
 
 
 
