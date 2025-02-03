@@ -118,7 +118,7 @@ try {
 let data = await yts("https://youtube.com/watch?v=" + videoId);
 let response = await savetube("https://youtube.com/watch?v=" + videoId, format, 1)
 if (!response.status) {
-response = await oceanSaver("https://youtube.com/watch?v=" + videoId, 'mp3')
+response = await savetube("https://youtube.com/watch?v=" + videoId, 'mp3')
 }
 if (!response.status) {
 response = await savetube("https://youtube.com/watch?v=" + videoId, format, 1)
@@ -151,7 +151,7 @@ try {
 let data = await yts("https://youtube.com/watch?v=" + videoId);
 let response = await savetube("https://youtube.com/watch?v=" + videoId, format, 0)
 if (!response.status) {
-response = await oceanSaver("https://youtube.com/watch?v=" + videoId, format)
+response = await savetube("https://youtube.com/watch?v=" + videoId, format)
 }
 if (!response.status) {
 response = await savetube("https://youtube.com/watch?v=" + videoId, format, 0)
