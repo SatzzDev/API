@@ -59,8 +59,8 @@ origin: 'https://yt.savetube.me/',
 'user-agent': 'Postify/1.0.0',
 'Content-Type': 'application/json'
 };
-const umber = [51,54,61,63]
-const cdnNumber = umber[Math.floor(Math.random() * umber.length)]
+const cdnNumber = 54
+//const cdnNumber = umber[Math.floor(Math.random() * umber.length)]
 const cdnUrl = `cdn${cdnNumber}.savetube.su`;
 const videoInfoResponse = await axios.post(
 `https://${cdnUrl}/info`, {
