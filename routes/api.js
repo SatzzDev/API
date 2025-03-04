@@ -75,9 +75,9 @@ const img = [
 "https://i.pinimg.com/originals/f6/7b/7f/f67b7f906fab58eb0c8c40f38f76a22f.jpg",
 "https://i.pinimg.com/originals/d0/b2/41/d0b241054f2046e94b76ba7516b2f43b.jpg",
 "https://i.pinimg.com/originals/e4/9a/72/e49a72f427ac85c374cbed21fa3083f1.jpg",
-"https://i.pinimg.com/originals/f7/66/f8/f766f8b512ca8fe926f36db183f246c3.jpg",
-"https://i.pinimg.com/originals/a0/79/98/a07998f0166c7d2311ce313232ae49a3.jpg",
-"https://i.pinimg.com/originals/e8/e1/3c/e8e13cfff5d6f84845da792611725756.jpg",
+"https://i.pinimg.com/736x/21/6a/be/216abe2436cb4fb107bc33c5da8fc609.jpg",
+"https://i.pinimg.com/736x/78/64/e0/7864e0e0358f5f9e3740b9c564c4e0cc.jpg",
+"https://i.pinimg.com/736x/b1/31/01/b131018a1ca6317e390e3a86c147a3f6.jpg",
 ];
 const randomImgUrl = img[Math.floor(Math.random() * img.length)];
 try {
