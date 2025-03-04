@@ -70,18 +70,14 @@ throw new Error(`Failed to fetch buffer from URL: ${url}. ${err.message}`);
 
 //━━━━━━━━━━[ START OF API GET ]━━━━━━━━━━━━//
 
-router.get("/thmb", async (req, res) => {
+router.get("/miya", async (req, res) => {
 const img = [
-"https://i.pinimg.com/originals/8e/a6/27/8ea62747934dd13912a9027b37219907.jpg",
-"https://i.pinimg.com/originals/ae/7e/3b/ae7e3bada352578068f2048283838941.jpg",
-"https://i.pinimg.com/originals/c7/e9/ae/c7e9ae21404e5cc87ceccb591572de26.jpg",
-"https://i.pinimg.com/originals/25/a7/fc/25a7fc44f70c2bac07bcb014e952f654.jpg",
-"https://i.pinimg.com/originals/f5/39/73/f539739c594cb8bd9034d640d142d97e.jpg",
-"https://i.pinimg.com/originals/7f/4e/77/7f4e77dbfdd04b979ad38239d02b0ce8.jpg",
-"https://i.pinimg.com/originals/65/fa/04/65fa04f58f9a102ccd36046eee3101b7.jpg",
-"https://i.pinimg.com/originals/af/4c/68/af4c685f1671e00b6c1b33fdd0f6cc96.jpg",
-"https://i.pinimg.com/originals/25/a7/fc/25a7fc44f70c2bac07bcb014e952f654.jpg",
-"https://i.pinimg.com/originals/d1/e1/8b/d1e18bb7e886fb399b04cb50c99aa4f2.jpg",
+"https://i.pinimg.com/originals/f6/7b/7f/f67b7f906fab58eb0c8c40f38f76a22f.jpg",
+"https://i.pinimg.com/originals/d0/b2/41/d0b241054f2046e94b76ba7516b2f43b.jpg",
+"https://i.pinimg.com/originals/e4/9a/72/e49a72f427ac85c374cbed21fa3083f1.jpg",
+"https://i.pinimg.com/originals/f7/66/f8/f766f8b512ca8fe926f36db183f246c3.jpg",
+"https://i.pinimg.com/originals/a0/79/98/a07998f0166c7d2311ce313232ae49a3.jpg",
+"https://i.pinimg.com/originals/e8/e1/3c/e8e13cfff5d6f84845da792611725756.jpg",
 ];
 const randomImgUrl = img[Math.floor(Math.random() * img.length)];
 try {
