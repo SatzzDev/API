@@ -72,12 +72,18 @@ throw new Error(`Failed to fetch buffer from URL: ${url}. ${err.message}`);
 
 router.get("/miya", async (req, res) => {
 const img = [
-"https://i.pinimg.com/736x/a5/6b/e4/a56be49b98f2f4327cb518bc8c8610cc.jpg",
-"https://i.pinimg.com/originals/d0/b2/41/d0b241054f2046e94b76ba7516b2f43b.jpg",
-"https://i.pinimg.com/originals/e4/9a/72/e49a72f427ac85c374cbed21fa3083f1.jpg",
-"https://i.pinimg.com/736x/21/6a/be/216abe2436cb4fb107bc33c5da8fc609.jpg",
-"https://i.pinimg.com/736x/d2/00/9e/d2009e9575097b3ef9be8a1ad310415d.jpg",
-"https://i.pinimg.com/736x/d7/f5/22/d7f522aee2ad20b92fd8657595a568a2.jpg",
+"https://files.catbox.moe/2h6ldj.jpg",
+"https://files.catbox.moe/yyd7g8.jpg",
+"https://files.catbox.moe/dp93zm.jpg",
+"https://files.catbox.moe/y85ffu.jpg",
+"https://files.catbox.moe/bgbg25.jpg",
+"https://files.catbox.moe/cl2fa8.jpg",
+"https://files.catbox.moe/keqg4y.jpg",
+"https://files.catbox.moe/qqi45m.jpg",
+"https://files.catbox.moe/acrxij.jpg",
+"https://files.catbox.moe/de5jxl.jpg",
+"https://files.catbox.moe/ooyaax.jpg",
+"https://files.catbox.moe/918gue.jpg",
 ];
 const randomImgUrl = img[Math.floor(Math.random() * img.length)];
 try {
