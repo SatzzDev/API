@@ -1,5 +1,7 @@
 import axios from 'axios'
 import yts from 'yt-search'
+import ytdl from 'ytdl-core'
+
 export async function oceanSaver(url, format) {
 try {
 let { data: downloadInit } = await axios.get('https://p.oceansaver.in/ajax/download.php?copyright=0&format=' + format + '&url=' + url)
@@ -105,69 +107,61 @@ message: error.message
 }
 
 
-export const ytmp3 = async(link, formats = 128) => {
-const videoId = getYouTubeVideoId(link);
-const format = audio.includes(formats) ? formats : 128
-if (!videoId) {
-return {
-status: false,
-message: "Invalid YouTube URL"
-};
-}
+export async function ytmp3(url) {
 try {
-let data = await yts("https://youtube.com/watch?v=" + videoId);
-let response = await savetube("https://youtube.com/watch?v=" + videoId, format, 1)
-if (!response.status) {
-response = await savetube("https://youtube.com/watch?v=" + videoId, 'mp3')
-}
-if (!response.status) {
-response = await savetube("https://youtube.com/watch?v=" + videoId, format, 1)
-}
+const {videoDetails} = await ytdl.getInfo(url, {lang: "id"});
+const stream = await ytdl(url, {filter: "audioonly",quality: "highestaudio"});
+const chunks = [];
+stream.on("data", (chunk) => chunks.push(chunk));
+await new Promise((resolve, reject) => {
+stream.on("end", resolve);
+stream.on("error", reject);
+});
+const buffer = Buffer.concat(chunks);
 return {
 status: true,
 creator: "@krniwnstria",
-metadata: data.all[0],
-download: response
+metadata: {
+title: videoDetails.title,
+channel: videoDetails.author.name,
+seconds: videoDetails.lengthSeconds,
+description: videoDetails.description,
+image: videoDetails.thumbnails.slice(-1)[0].url,
+},
+buffer: buffer,
+size: buffer.length,
 };
 } catch (error) {
-console.log(error)
-return {
-status: false,
-message: error.response ? `HTTP Error: ${error.response.status}` : error.message
-};
+throw error;
 }
 }
 
-export const ytmp4 = async(link, formats = 360) => {
-const videoId = getYouTubeVideoId(link);
-const format = video.includes(formats) ? formats : 360
-if (!videoId) {
-return {
-status: false,
-message: "Invalid YouTube URL"
-};
-}
+export async function ytmp4(url) {
 try {
-let data = await yts("https://youtube.com/watch?v=" + videoId);
-let response = await savetube("https://youtube.com/watch?v=" + videoId, format, 0)
-if (!response.status) {
-response = await savetube("https://youtube.com/watch?v=" + videoId, format)
-}
-if (!response.status) {
-response = await savetube("https://youtube.com/watch?v=" + videoId, format, 0)
-}
+const { videoDetails } = await ytdl.getInfo(url, { lang: "id" });
+const stream = await ytdl(url, { filter: "videoandaudio", quality: "highestvideo" });
+const chunks = [];
+stream.on("data", (chunk) => chunks.push(chunk));
+await new Promise((resolve, reject) => {
+stream.on("end", resolve);
+stream.on("error", reject);
+});
+const buffer = Buffer.concat(chunks);
 return {
 status: true,
 creator: "@krniwnstria",
-metadata: data.all[0],
-download: response
+metadata: {
+title: videoDetails.title,
+channel: videoDetails.author.name,
+seconds: videoDetails.lengthSeconds,
+description: videoDetails.description,
+image: videoDetails.thumbnails.slice(-1)[0].url,
+},
+buffer: buffer,
+size: buffer.length,
 };
 } catch (error) {
-console.log(error)
-return {
-status: false,
-message: error.response ? `HTTP Error: ${error.response.status}` : error.message
-};
+throw error;
 }
 }
 
