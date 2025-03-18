@@ -304,7 +304,7 @@ router.get("/ytlist2", async(req, res) => {
 var { list } = req.query;
 if (!list) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter list.'})
 let r = await yts( { listId: list } )
-res.json(r.videos.map(ues => (({ title:ues.author.name, description:ues.title, id:`!ytmp3 ${ues.url}`}))
+res.json(r.videos.map(ues => (({ title:ues.author.name, description:ues.title, id:`!ytmp3 ${ues.url}`})))
 })
 
 router.get("/ytplay", async(req, res) => {
