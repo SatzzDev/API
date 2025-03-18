@@ -300,6 +300,7 @@ let r = await yts( { listId: list } )
 res.json(r)
 })
 
+
 router.get("/ytlist2", async(req, res) => {
 var { list } = req.query;
 if (!list) return res.status(400).json({ status: false, creator: '@krniwnstria', message: 'missing parameter list.' })
@@ -383,16 +384,32 @@ router.get("/ytmp3", async(req, res) => {
 var { url } = req.query;
 if (!url) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter url.'})
 let r = await ytmp3(url)
-res.status(200).json(r)
+res.set({
+"Content-Type": "audio/mp3",
+"Content-Length": r.buffer.length,
+"Cache-Control": "public, max-age=31536000",
+"Accept-Ranges": "bytes", 
+});
+res.end(r.buffer) 
 })
 
 
 
 router.get("/ytmp4", async(req, res) => {
 var { url } = req.query;
-if (!url) return res.status(400).json({ status : false, creator : `@krniwnstria`, message: 'missing parameter url.'})
+if (!url) return res.status(400).json({ status: false, creator: '@krniwnstria', message: 'missing parameter url.' })
+try {
 let r = await ytmp4(url)
-res.status(200).json(r)
+res.set({
+"Content-Type": "video/mp4",
+"Content-Length": r.buffer.length,
+"Cache-Control": "public, max-age=31536000",
+"Accept-Ranges": "bytes",
+});
+res.end(r.buffer)
+} catch (error) {
+res.status(500).json({ status: false, creator: '@krniwnstria', message: 'Error processing video.', error: error.message })
+}
 })
 
 
