@@ -305,7 +305,7 @@ var { list } = req.query;
 if (!list) return res.status(400).json({ status: false, creator: '@krniwnstria', message: 'missing parameter list.' })
 try {
 let r = await yts({ listId: list })
-res.json(r.videos.map(ues => ({ title: ues.title, description: ues.author.name, id: `!ytmp3 ${ues.url}` })))
+res.json(r.videos.map(ues => ({ title: ues.title, description: ues.author.name, id: `!ytmp3 https://www.youtube.com/watch?v=${ues.videoId}` })))
 } catch (error) {
 res.status(500).json({ status: false, creator: '@krniwnstria', message: 'Error fetching playlist.', error: error.message })
 }
