@@ -16,6 +16,12 @@ const response = await axios.post(url, data, { headers });
 return response.data.access_token;
 }
 
+function formatDuration(ms) {
+  const minutes = Math.floor(ms / 60000);
+  const seconds = ((ms % 60000) / 1000).toFixed(0);
+  return `${minutes}:${seconds.padStart(2, "0")}`;
+}
+
 export async function spotifySearch(query) {
 const accessToken = await getAccessToken();
 const url = `https://api.spotify.com/v1/search`;
@@ -25,9 +31,12 @@ const params = { q: query, type: 'track', limit: 10 };
 const response = await axios.get(url, { headers, params });
 const results = response.data.tracks.items.map(track => ({
 name: track.name,
-artists: track.artists.map(artist => artist.name).join(', '),
+artists: track.artists.map((artist) => artist.name).join(", "),
 album: track.album.name,
-url: track.external_urls.spotify,
+release_date: track.album.release_date,
+cover: track.album.images[0].url,
+duration: formatDuration(track.duration_ms),
+url: track.external_urls.spotify
 }));
 
 return {
