@@ -46,6 +46,33 @@ results
 };
 }
 
+export async function getRecommendations(seed_genres = 'pop') {
+const accessToken = await getAccessToken();
+const url = `https://api.spotify.com/v1/recommendations`;
+const headers = { 'Authorization': `Bearer ${accessToken}` };
+const params = {
+limit: 10,
+seed_genres,
+};
+
+const response = await axios.get(url, { headers, params });
+const results = response.data.tracks.map(track => ({
+name: track.name,
+artists: track.artists.map((artist) => artist.name).join(", "),
+album: track.album.name,
+release_date: track.album.release_date,
+cover: track.album.images[0]?.url || '',
+duration: formatDuration(track.duration_ms),
+url: track.external_urls.spotify,
+}));
+
+return {
+author: "@krniwnstria",
+status: 200,
+results
+};
+}
+
 export const spotifydl = async(url) => {
 return new Promise(async (resolve, reject) => {
 try {
