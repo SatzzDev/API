@@ -26,7 +26,7 @@ export async function spotifySearch(query) {
 const accessToken = await getAccessToken();
 const url = `https://api.spotify.com/v1/search`;
 const headers = { 'Authorization': `Bearer ${accessToken}` };
-const params = { q: query, type: 'track', limit: 10 };
+const params = { q: query, type: 'track', market: 'ID' };
 
 const response = await axios.get(url, { headers, params });
 const results = response.data.tracks.items.map(track => ({
