@@ -21,7 +21,7 @@ import { removebg } from './scraper/removebg.js';
 import { dayoff } from './scraper/dayoff.js';
 import { enhancedImageAPI } from './scraper/enhance.js'
 import { ai } from './scraper/ai.js';
-import { SpotifyDailyChart } from './scraper/trendingsongs.js';
+import { SpotifyWeeklyChart } from './scraper/trendingsongs.js';
 import { soundc } from './scraper/soundcloud.js'
 import { ytdl } from './scraper/ytdl.js';
 import { xDownloader } from './scraper/x.js';
@@ -447,7 +447,7 @@ router.get("/lyrics", async(req, res) => {
   } else return res.status(400).json({ status : false, developer: 'https://t.me/krniwnstria/', message: '[ ! ] invalid parameters.'})
 })
 
-router.get("/SpotifyDailyChart", async(req, res) => {
+router.get("/SpotifyWeeklyChart", async(req, res) => {
   let {country} = req.query;
   if (!country) return res.status(400).json({
     status: false,
@@ -455,7 +455,7 @@ router.get("/SpotifyDailyChart", async(req, res) => {
     message: '[ ! ] missing parameter country. example country=id',
     note: 'country=global for global.'
   })
-  let r = await SpotifyDailyChart(country)
+  let r = await SpotifyWeeklyChart(country)
   res.status(200).json(r)
 })
 
