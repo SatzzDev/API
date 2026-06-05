@@ -1,24 +1,28 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 
-export async function SpotifyDailyChart(country = 'global') {
+export async function SpotifyWeeklyChart(country = 'global') {
   try {
     const { data } = await axios.get(
-      `https://kworb.net/spotify/country/${country}_daily.html`
+      `https://kworb.net/spotify/country/${country}_weekly.html`
     )
 
     const $ = cheerio.load(data)
     const result = []
 
-    $('#spotifydaily tr').each((_, row) => {
+    const parseNumber = value =>
+      Number(String(value).replace(/[^\d-]/g, '')) || 0
+
+    $('#spotifyweekly tr').each((_, row) => {
       const tds = $(row).find('td')
 
-      if (tds.length < 7) return
+      if (tds.length < 9) return
 
-      const rankText = tds.eq(0).text().trim()
-      if (!rankText || isNaN(Number(rankText))) return
+      const rank = parseNumber(tds.eq(0).text())
 
-      const totalStream = tds.eq(6).text().trim()
+      if (!rank) return
+
+      const rankChange = tds.eq(1).text().trim()
 
       const links = tds.eq(2).find('a')
 
@@ -55,8 +59,24 @@ export async function SpotifyDailyChart(country = 'global') {
         })
       })
 
+      const weeksOnChart = parseNumber(tds.eq(3).text())
+      const peakPosition = parseNumber(tds.eq(4).text())
+
+      const peakText = tds.eq(5).text().trim()
+
+      const weeksAtPeak =
+        peakText.match(/\((?:x)?(\d+)\)/)?.[1]
+          ? Number(peakText.match(/\((?:x)?(\d+)\)/)[1])
+          : 0
+
+      const weeklyStreams = parseNumber(tds.eq(6).text())
+      const streamChange = parseNumber(tds.eq(7).text())
+      const totalStreams = parseNumber(tds.eq(8).text())
+
       result.push({
-        rank: Number(rankText),
+        rank,
+        rankChange,
+
         artist: {
           name: artistEl.text().trim(),
           id: artistId,
@@ -64,6 +84,7 @@ export async function SpotifyDailyChart(country = 'global') {
             ? `https://open.spotify.com/artist/${artistId}`
             : null
         },
+
         title: {
           name: trackEl.text().trim(),
           id: trackId,
@@ -71,10 +92,16 @@ export async function SpotifyDailyChart(country = 'global') {
             ? `https://open.spotify.com/track/${trackId}`
             : null
         },
+
         featuredArtists,
-        totalStream: Number(
-          totalStream.replace(/[^\d]/g, '')
-        ) || 0
+
+        weeksOnChart,
+        peakPosition,
+        weeksAtPeak,
+
+        weeklyStreams,
+        streamChange,
+        totalStreams
       })
     })
 
