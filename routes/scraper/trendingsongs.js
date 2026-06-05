@@ -4,40 +4,47 @@ import * as cheerio from 'cheerio'
 export async function SpotifyDailyChart(country = 'global') {
   try {
     const { data } = await axios.get(
-      `https://kworb.net/spotify/country/${country}_weekly.html`
+      `https://kworb.net/spotify/country/${country}_daily.html`
     )
 
     const $ = cheerio.load(data)
-    const songs = []
+    const result = []
 
-    $('#spotifydaily tr').each((_, element) => {
-      const rank = $(element).find('td').eq(0).text().trim()
-      const totalStream = $(element).find('td').eq(6).text().trim()
+    $('#spotifydaily tr').each((_, row) => {
+      const tds = $(row).find('td')
 
-      if (!rank || isNaN(rank)) return
+      if (tds.length < 7) return
 
-      const links = $(element).find('td').eq(2).find('a')
+      const rankText = tds.eq(0).text().trim()
+      if (!rankText || isNaN(Number(rankText))) return
+
+      const totalStream = tds.eq(6).text().trim()
+
+      const links = tds.eq(2).find('a')
 
       if (links.length < 2) return
 
-      const artistName = $(links[0]).text().trim()
-      const artistHref = $(links[0]).attr('href') || ''
+      const artistEl = links.eq(0)
+      const trackEl = links.eq(1)
 
-      const trackName = $(links[1]).text().trim()
-      const trackHref = $(links[1]).attr('href') || ''
+      const artistHref = artistEl.attr('href') || ''
+      const trackHref = trackEl.attr('href') || ''
 
       const artistId =
-        artistHref.match(/artist\/([^/.]+)\.html/)?.[1] || null
+        artistHref.match(/artist\/([^/.]+)\.html/)?.[1] ?? null
 
       const trackId =
-        trackHref.match(/track\/([^/.]+)\.html/)?.[1] || null
+        trackHref.match(/track\/([^/.]+)\.html/)?.[1] ?? null
 
       const featuredArtists = []
 
-      links.slice(2).each((_, el) => {
+      links.each((index, el) => {
+        if (index < 2) return
+
         const href = $(el).attr('href') || ''
+
         const id =
-          href.match(/artist\/([^/.]+)\.html/)?.[1] || null
+          href.match(/artist\/([^/.]+)\.html/)?.[1] ?? null
 
         featuredArtists.push({
           name: $(el).text().trim(),
@@ -48,17 +55,17 @@ export async function SpotifyDailyChart(country = 'global') {
         })
       })
 
-      songs.push({
-        rank: Number(rank),
+      result.push({
+        rank: Number(rankText),
         artist: {
-          name: artistName,
+          name: artistEl.text().trim(),
           id: artistId,
           url: artistId
             ? `https://open.spotify.com/artist/${artistId}`
             : null
         },
         title: {
-          name: trackName,
+          name: trackEl.text().trim(),
           id: trackId,
           url: trackId
             ? `https://open.spotify.com/track/${trackId}`
@@ -66,23 +73,20 @@ export async function SpotifyDailyChart(country = 'global') {
         },
         featuredArtists,
         totalStream: Number(
-          totalStream.replace(/,/g, '')
-        ) || totalStream
+          totalStream.replace(/[^\d]/g, '')
+        ) || 0
       })
     })
 
     return {
       status: true,
-      developer: 'https://t.me/krniwnstria',
       description: $('.pagetitle').text().trim(),
-      songs
+      result
     }
   } catch (err) {
-    console.error('Error fetching songs:', err)
-
     return {
       status: false,
-      message: err.message
+      error: err.message
     }
   }
 }
