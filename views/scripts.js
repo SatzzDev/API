@@ -1,5 +1,5 @@
 // ========== Modal & Audio ==========
-const modal = document.getElementById('welcome-modal');
+//const modal = document.getElementById('welcome-modal');
 const playlist = [
   'ssstik.io_1749621584342.mp3',
   'Consume (feat. Goon Des Garcons) - Chase Atlantic.mp3',
@@ -68,13 +68,6 @@ function playPrev() {
 
 document.addEventListener('DOMContentLoaded', () => {
   audio.load();
-  modal.showModal();
-});
-
-modal.addEventListener('close', () => {
-  modal.close();
-  audio.play();
-  updateMediaSession();
 });
 
 audio.addEventListener('ended', playNext);
