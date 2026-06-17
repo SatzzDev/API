@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake">
+<html lang="en" data-theme="cyberapi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +20,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
-
-<!-- CSS and Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link href='styles.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <link href='https://cdn.boxicons.com/fonts/transformations.min.css' rel='stylesheet'>
@@ -30,30 +31,107 @@
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+[data-theme="cyberapi"]{
+--color-base-100:#12161d;
+--color-base-200:#0a0d12;
+--color-base-300:#1c212b;
+--color-base-content:#e8ecf2;
+--color-primary:#2ee6b8;
+--color-primary-content:#04140f;
+--color-secondary:#8c7cf7;
+--color-secondary-content:#0c0a1a;
+--color-accent:#5fb6ff;
+--color-accent-content:#03101c;
+--color-neutral:#1c212b;
+--color-neutral-content:#c7cdda;
+--color-info:#5fb6ff;
+--color-info-content:#03101c;
+--color-success:#2ee6b8;
+--color-success-content:#04140f;
+--color-warning:#f5b942;
+--color-warning-content:#1a1102;
+--color-error:#ff6b6e;
+--color-error-content:#1a0506;
+--radius-box:1rem;
+--radius-field:0.6rem;
+--radius-selector:1rem;
+--border:1px;
+--depth:0;
+--noise:0;
+color-scheme:dark;
+}
+[data-theme="cyberapi-light"]{
+--color-base-100:#f5f6f8;
+--color-base-200:#eceff3;
+--color-base-300:#e2e6ed;
+--color-base-content:#10141c;
+--color-primary:#0fb892;
+--color-primary-content:#ffffff;
+--color-secondary:#6a57e0;
+--color-secondary-content:#ffffff;
+--color-accent:#2c8fe0;
+--color-accent-content:#ffffff;
+--color-neutral:#1c212b;
+--color-neutral-content:#f5f6f8;
+--color-info:#2c8fe0;
+--color-info-content:#ffffff;
+--color-success:#0fb892;
+--color-success-content:#ffffff;
+--color-warning:#c98a12;
+--color-warning-content:#1a1102;
+--color-error:#e0454b;
+--color-error-content:#ffffff;
+--radius-box:1rem;
+--radius-field:0.6rem;
+--radius-selector:1rem;
+--border:1px;
+--depth:0;
+--noise:0;
+color-scheme:light;
+}
+body{font-family:'Inter',system-ui,sans-serif;letter-spacing:-0.01em}
+.brand-mark{font-family:'Space Grotesk',sans-serif;letter-spacing:0.02em}
+.font-display{font-family:'Space Grotesk',sans-serif}
+.font-mono{font-family:'JetBrains Mono',monospace}
+.status-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--color-primary);padding:.35rem .7rem;border:1px solid color-mix(in oklab, var(--color-primary) 35%, transparent);border-radius:999px;background:color-mix(in oklab, var(--color-primary) 8%, transparent)}
+.status-dot{width:.4rem;height:.4rem;border-radius:999px;background:var(--color-primary);animation:pulseDot 2s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.4}}
+.stat-card{position:relative;overflow:hidden;border:1px solid var(--color-base-300)}
+.stat-card::before,.stat-card::after{content:"";position:absolute;width:14px;height:14px;border-color:color-mix(in oklab, var(--color-primary) 55%, transparent);opacity:.6;pointer-events:none}
+.stat-card::before{top:10px;right:10px;border-top:1.5px solid;border-right:1.5px solid}
+.stat-card::after{bottom:10px;left:10px;border-bottom:1.5px solid;border-left:1.5px solid}
+.stat-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;opacity:.55}
+.stat-value{font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:-0.02em}
+.perf-label{font-size:.85rem;opacity:.75}
+.perf-value{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.85rem}
+.chip-avatar{border-color:var(--color-base-300)}
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.status-dot{animation:none}}
+</style>
 </head>
 <body class="bg-base-200">
 <div class="drawer lg:drawer-open">
 <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
-<!-- Sidebar -->
 <div class="drawer-side">
 <label for="sidebar-drawer" class="drawer-overlay"></label>
-<aside class="menu p-4 w-64 bg-base-100 text-base-content min-h-full">
-<div class="flex items-center justify-between mb-4">
-<h1 class="text-3xl font-bold">
-<span class="text-primary ml-7">CYBER</span><span class="text-secondary">API</span>
+<aside class="menu p-4 w-64 bg-base-100 text-base-content min-h-full border-r border-base-300">
+<div class="flex items-center justify-between mb-6">
+<h1 class="brand-mark text-2xl font-bold">
+<span class="text-primary">CYBER</span><span class="text-secondary">API</span>
 </h1>
-<label for="sidebar-drawer" class="btn btn-square btn-sm drawer-button"><i class="bx bx-x text-sm"></i>
+<label for="sidebar-drawer" class="btn btn-square btn-sm btn-ghost drawer-button"><i class="bx bx-x text-sm"></i>
 </label>
 </div>
+<div class="status-pill mb-6"><span class="status-dot"></span>ONLINE</div>
 
-<ul class="menu text-lg space-y-1 w-full rounded-box">
-<li><a class="active"><i class="bx bx-dashboard bx-sm mr-2"></i> Dashboard</a></li>
+<ul class="menu text-base space-y-1 w-full rounded-box gap-1">
+<li><a class="active font-medium"><i class="bx bx-dashboard bx-sm mr-2"></i> Dashboard</a></li>
 
-<!-- AI -->
 <li>
 <details>
-<summary><i class='bx bx-brain bx-sm mr-2'></i> AI</summary>
-<ul class="pl-4 text-sm">
+<summary class="font-display font-medium"><i class='bx bx-brain bx-sm mr-2'></i> AI</summary>
+<ul class="pl-4 font-mono text-sm">
 <li><a href="/v1/ai/deepseek-r1?q=hai">deepseek-r1</a></li>
 <li><a href="/v1/ai/gpt-3.5-turbo?q=hai">gpt-4o</a></li>
 <li><a href="/v1/ai/gpt-4o?q=hai">gpt-4o</a></li>
@@ -62,11 +140,10 @@
 </details>
 </li>
 
-<!-- Media & Fun -->
 <li>
 <details>
-<summary><i class="bx bx-balloon bx-sm mr-2"></i> Media & Fun</summary>
-<ul class="pl-4 text-sm">
+<summary class="font-display font-medium"><i class="bx bx-balloon bx-sm mr-2"></i> Media & Fun</summary>
+<ul class="pl-4 font-mono text-sm">
 <li><a href="/v1/anime">Anime Pic</a></li>
 <li><a href="/v1/meme">Meme</a></li>
 <li><a href="/v1/animequote">Anime Quote</a></li>
@@ -78,11 +155,10 @@
 </details>
 </li>
 
-<!-- Music & Lyrics -->
 <li>
 <details>
-<summary><i class='bx bx-music bx-sm mr-2'></i> Music & Lyrics</summary>
-<ul class="pl-4 text-sm">
+<summary class="font-display font-medium"><i class='bx bx-music bx-sm mr-2'></i> Music & Lyrics</summary>
+<ul class="pl-4 font-mono text-sm">
 <li><a href="/v1/ytsearch?q=Perfect">YouTube Search</a></li>
 <li><a href="/v1/spotify?q=Perfect">Spotify Search</a></li>
 <li><a href="/v1/soundcloud?q=Perfect">SoundCloud Search</a></li>
@@ -92,11 +168,10 @@
 </details>
 </li>
 
-<!-- Downloader -->
 <li>
 <details>
-<summary><i class='bx bx-chevrons-down bx-sm mr-2'></i> Downloader</summary>
-<ul class="pl-4 text-sm">
+<summary class="font-display font-medium"><i class='bx bx-chevrons-down bx-sm mr-2'></i> Downloader</summary>
+<ul class="pl-4 font-mono text-sm">
 <li><a href="/v1/fbdl">Facebook</a></li>
 <li><a href="/v1/igdl">Instagram</a></li>
 <li><a href="/v1/threadsdl">Threads</a></li>
@@ -109,11 +184,10 @@
 </details>
 </li>
 
-<!-- Tools & Utility -->
 <li>
 <details>
-<summary><i class="bx bx-axe bx-sm mr-2"></i> Tools & Utility</summary>
-<ul class="pl-4 text-base space-y-1">
+<summary class="font-display font-medium"><i class="bx bx-axe bx-sm mr-2"></i> Tools & Utility</summary>
+<ul class="pl-4 font-mono text-sm space-y-1">
 <li><a href="/v1/removebg?url=https://freeimghost.net/images/2025/06/03/WhatsApp-Image-2025-06-04-at-8.12.35-AM.jpeg">Remove Background</a></li>
 <li><a href="/v1/enhance?url=https://freeimghost.net/images/2025/06/03/WhatsApp-Image-2025-06-04-at-8.12.35-AM.jpeg">Image Enhancer</a></li>
 <li><a href="/v1/qrcode">QR Code</a></li>
@@ -126,95 +200,88 @@
 </div>
 
 
-<!-- Main Content -->
-<div class="drawer-content p-4">
-<!-- Mobile Header -->
-<header class="navbar bg-base-100 rounded-box shadow mb-4 lg:hidden">
+<div class="drawer-content p-4 md:p-6">
+<header class="navbar bg-base-100 rounded-box shadow-sm border border-base-300 mb-4 lg:hidden">
 <label for="sidebar-drawer" class="btn btn-square btn-ghost">
-<i class="bx bx-menu text-2xl"></i> <!-- Increased icon size -->
+<i class="bx bx-menu text-2xl"></i>
 </label>
 <div class="flex-1">
-<h1 class="text-xl font-bold ml-2"> <!-- Increased from text-2xl to text-3xl -->
-<span class="animate-pulse">⟨</span>
+<h1 class="brand-mark text-xl font-bold ml-2">
 <span class="text-primary">CYBER</span><span class="text-secondary">API</span>
-<span class="animate-pulse">⟩</span>
 </h1>
 </div>
-<div class="flex-none gap-2">
-<label class="swap swap-rotate mr-2">
-<input type="checkbox" class="theme-controller"/>
-<i class="bx bx-sun swap-on text-2xl"></i> <!-- Increased icon size -->
-<i class="bx bx-moon swap-off text-2xl"></i> <!-- Increased icon size -->
+<div class="flex-none gap-3 flex items-center">
+<span class="status-pill hidden sm:inline-flex"><span class="status-dot"></span>LIVE</span>
+<label class="swap swap-rotate">
+<input type="checkbox" class="theme-controller" value="cyberapi-light"/>
+<i class="bx bx-sun swap-on text-2xl"></i>
+<i class="bx bx-moon swap-off text-2xl"></i>
 </label>
 </div>
 </header>
-<!-- DESKTOP HEADER (hidden pas mobile) -->
-<header class="navbar bg-base-100 rounded-box shadow mb-4 hidden lg:flex">
+<header class="navbar bg-base-100 rounded-box shadow-sm border border-base-300 mb-4 hidden lg:flex">
 <div class="flex-1">
-<h1 class="text-2xl font-bold ml-2">
-<span class="animate-pulse">⟨</span>
+<h1 class="brand-mark text-2xl font-bold ml-2">
 <span class="text-primary">CYBER</span><span class="text-secondary">API</span>
-<span class="animate-pulse">⟩</span>
 </h1>
 </div>
-<div class="flex-none gap-4">
-<label class="swap swap-rotate mr-2">
-<input type="checkbox" class="theme-controller"/>
+<div class="flex-none gap-4 flex items-center">
+<span class="status-pill"><span class="status-dot"></span>SYSTEM ONLINE</span>
+<label class="swap swap-rotate">
+<input type="checkbox" class="theme-controller" value="cyberapi-light"/>
 <i class="bx bx-sun swap-on text-xl"></i>
 <i class="bx bx-moon swap-off text-xl"></i>
 </label>
 </div>
 </header>
 
-<!-- Dashboard Content -->
 <div class="grid gap-4">
-<!-- Status Cards -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-<div class="card bg-base-100 shadow-xl">
+<div class="card stat-card bg-base-100">
 <div class="card-body">
 <div class="flex justify-between items-center">
 <div>
-<h3 class="card-title text-lg">UPTIME</h3> <!-- Increased to text-lg -->
-<p id="uptime" class="text-3xl font-bold countdown">
+<h3 class="stat-eyebrow">UPTIME</h3>
+<p id="uptime" class="stat-value countdown text-3xl">
 <span class="uptime-h"></span>:
 <span class="uptime-m"></span>:
 <span class="uptime-s"></span>
 </p>
 </div>
-<div class="btn btn-secondary btn-circle">
-<i class="bx bx-timer text-xl"></i> <!-- Increased icon size -->
-</div>
-</div>
-</div>
-</div>
-<div class="card bg-base-100 shadow-xl">
-<div class="card-body">
-<div class="flex justify-between items-center">
-<div>
-<h3 class="card-title text-lg">API REQUESTS</h3> <!-- Increased to text-lg -->
-<p id="api-request-count" class="text-3xl font-bold">5,000</p> <!-- Increased to text-3xl -->
-</div>
 <div class="btn btn-primary btn-circle">
-<i class="bx bx-arrow-big-up text-xl"></i> <!-- Increased icon size -->
+<i class="bx bx-timer text-xl"></i>
 </div>
 </div>
 </div>
 </div>
-
-
-<div class="card bg-base-100 shadow-xl">
+<div class="card stat-card bg-base-100">
 <div class="card-body">
 <div class="flex justify-between items-center">
 <div>
-<h3 class="card-title text-lg">CURRENT TIME</h3>
-<p id="current-time" class="text-3xl font-bold countdown">
+<h3 class="stat-eyebrow">API REQUESTS</h3>
+<p id="api-request-count" class="stat-value text-3xl">5,000</p>
+</div>
+<div class="btn btn-secondary btn-circle">
+<i class="bx bx-arrow-big-up text-xl"></i>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="card stat-card bg-base-100">
+<div class="card-body">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="stat-eyebrow">CURRENT TIME</h3>
+<p id="current-time" class="stat-value countdown text-3xl">
 <span class="current-time-h"></span>:
 <span class="current-time-m"></span>:
 <span class="current-time-s"></span>
 </p>
 </div>
-<div class="btn btn-success btn-circle">
+<div class="btn btn-accent btn-circle">
 <i class="bx bx-clock-12 text-xl"></i>
 </div>
 </div>
@@ -223,36 +290,35 @@
 
 </div>
 
-<!-- System Performance -->
-<div class="card bg-base-100 shadow-xl">
+<div class="card bg-base-100 border border-base-300">
 <div class="card-body">
-<h3 class="card-title text-lg">SYSTEM PERFORMANCE</h3> <!-- Increased to text-lg -->
+<h3 class="font-mono text-xs tracking-widest opacity-60 mb-4">SYSTEM PERFORMANCE</h3>
 <div class="grid gap-4">
 <div>
 <div class="flex justify-between mb-2">
-<span class="text-base">CPU Usage</span> <!-- Increased to text-base -->
-<span id="cpu" class="text-primary font-semibold text-base"></span> <!-- Increased to text-base -->
+<span class="perf-label">CPU Usage</span>
+<span id="cpu" class="perf-value text-primary"></span>
 </div>
 <progress class="progress progress-primary" value="0" max="100"></progress>
 </div>
 <div>
 <div class="flex justify-between mb-2">
-<span class="text-base">Memory Usage</span> <!-- Increased to text-base -->
-<span id="mem" class="text-secondary font-semibold text-base"></span> <!-- Increased to text-base -->
+<span class="perf-label">Memory Usage</span>
+<span id="mem" class="perf-value text-secondary"></span>
 </div>
 <progress class="progress progress-secondary" value="0" max="100"></progress>
 </div>
 <div>
 <div class="flex justify-between mb-2">
-<span class="text-base">Disk Usage</span> <!-- Increased to text-base -->
-<span id="disk" class="text-success font-semibold text-base"></span> <!-- Increased to text-base -->
+<span class="perf-label">Disk Usage</span>
+<span id="disk" class="perf-value text-accent"></span>
 </div>
-<progress class="progress progress-success" value="0" max="100"></progress>
+<progress class="progress progress-accent" value="0" max="100"></progress>
 </div>
 <div>
 <div class="flex justify-between mb-2">
-<span class="text-base">Heap Usage</span> <!-- Increased to text-base -->
-<span id="heap" class="text-warning font-semibold text-base"></span> <!-- Increased to text-base -->
+<span class="perf-label">Heap Usage</span>
+<span id="heap" class="perf-value text-warning"></span>
 </div>
 <progress class="progress progress-warning" value="0" max="100"></progress>
 </div>
@@ -260,89 +326,73 @@
 </div>
 </div>
 
-<!-- Wrapper Grid biar dua card sampingan dan responsive -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-<!-- Community Card -->
-<div class="card card-dash bg-base-100 w-full shadow-xl">
+<div class="card card-dash bg-base-100 w-full">
 <div class="card-body">
-<h2 class="card-title text-xl font-bold">Join the Coding den! 🧠</h2>
-<p class="text-gray-400">Coding, tips, or just vibes — join the Coding den now!</p>
+<h2 class="font-display card-title text-xl font-bold">Join the Coding den</h2>
+<p class="opacity-70">Coding, tips, or just vibes — join the Coding den now.</p>
 <div class="card-actions justify-end">
-<button onclick="window.location.href='whatsapp://chat/?code=Gcif4RFcneZ3aK4mARDY4O'" class="btn btn-primary hover:bg-gray-700 transition">
+<button onclick="window.location.href='whatsapp://chat/?code=Gcif4RFcneZ3aK4mARDY4O'" class="btn btn-primary">
 Join Group
 </button>
 </div>
 </div>
 </div>
 
-<!-- Request Card -->
-<div class="card card-dash bg-base-100 w-full shadow-xl">
+<div class="card card-dash bg-base-100 w-full">
 <div class="card-body">
-<h2 class="card-title text-xl font-bold">Need More API Features?</h2>
-<p class="text-gray-400">Tell us what you need! Let’s level up this API together. 🔥</p>
+<h2 class="font-display card-title text-xl font-bold">Need More API Features?</h2>
+<p class="opacity-70">Tell us what you need. Let's level up this API together.</p>
 <div class="card-actions justify-end">
-<button onclick="window.location.href='whatsapp://chat/?code=LP0QxcOvKMWI60EGANi8BJ'" class="btn btn-secondary hover:bg-gray-700 transition">
+<button onclick="window.location.href='whatsapp://chat/?code=LP0QxcOvKMWI60EGANi8BJ'" class="btn btn-secondary">
 Drop a Request
 </button>
 </div>
 </div>
 </div>
 
-<!-- Thanks To Card -->
-<div class="card card-dash bg-base-100 w-full shadow-xl md:col-span-2">
+<div class="card card-dash bg-base-100 w-full md:col-span-2">
 <div class="card-body">
-<h2 class="card-title text-xl font-bold mb-4">Thanks To:</h2>
+<h2 class="font-display card-title text-xl font-bold mb-4">Thanks To</h2>
 <div class="flex flex-wrap gap-6 items-center">
-<!-- SatzzDev -->
-<div class="flex items-center gap-2">
-<img src="https://avatar.iran.liara.run/public/48" alt="SatzzDev" class="w-10 h-10 rounded-full border" />
+<div class="flex items-center gap-3">
+<img src="https://avatar.iran.liara.run/public/48" alt="SatzzDev" class="w-10 h-10 rounded-full chip-avatar border" />
 <div>
-<a href="https://github.com/SatzzDev" target="_blank" class="font-semibold">SatzzDev</a>
-<div class="text-xs text-gray-400">Leader & UI Designer</div>
+<a href="https://github.com/SatzzDev" target="_blank" class="font-medium">SatzzDev</a>
+<div class="font-mono text-xs opacity-60">Leader & UI Designer</div>
 </div>
 </div>
-<!-- lanaasad -->
-<div class="flex items-center gap-2">
-<img src="https://avatar.iran.liara.run/public/43" alt="lanaasad" class="w-10 h-10 rounded-full border" />
+<div class="flex items-center gap-3">
+<img src="https://avatar.iran.liara.run/public/43" alt="lanaasad" class="w-10 h-10 rounded-full chip-avatar border" />
 <div>
-<a href="https://github.com/lanaasad" target="_blank" class="font-semibold">Lana</a>
-<div class="text-xs text-gray-400">Co-Leader & Backend Developer</div>
+<a href="https://github.com/lanaasad" target="_blank" class="font-medium">Lana</a>
+<div class="font-mono text-xs opacity-60">Co-Leader & Backend Developer</div>
 </div>
 </div>
-<!-- RafelAlvah -->
-<div class="flex items-center gap-2">
-<img src="https://avatar.iran.liara.run/public/24" alt="Rafel" class="w-10 h-10 rounded-full border" />
+<div class="flex items-center gap-3">
+<img src="https://avatar.iran.liara.run/public/24" alt="Rafel" class="w-10 h-10 rounded-full chip-avatar border" />
 <div>
-<a href="https://github.com/RafelAlvah" target="_blank" class="font-semibold">Rafel</a>
-<div class="text-xs text-gray-400">Backend Developer</div>
+<a href="https://github.com/RafelAlvah" target="_blank" class="font-medium">Rafel</a>
+<div class="font-mono text-xs opacity-60">Backend Developer</div>
 </div>
 </div>
-<!-- Panji
-<div class="flex items-center gap-2">
-<img src="https://avatar.iran.liara.run/public/45" alt="Panji" class="w-10 h-10 rounded-full border" />
-<div>
-<a href="https://github.com/KaizDevs" target="_blank" class="font-semibold">Panji</a>
-<div class="text-xs text-gray-400">Beban</div>
-</div>
-</div> -->
-<!-- Tambahkan nama/avatar/pangkat lain jika perlu -->
 </div>
 </div>
 </div>
 
 </div>
-<footer class="text-center text-base-content/60 shadow-xl bg-base-100 rounded-box py-6">
-<p>Made with 💜 by Cyber Team</p>
-<p class="text-sm mt-2">© 2025 Cyber API. All rights reserved.</p>
+<footer class="text-center bg-base-100 border border-base-300 rounded-box py-6">
+<p class="font-mono text-xs tracking-widest opacity-60">CYBER API</p>
+<p class="text-xs mt-1 opacity-40">© 2025 — All rights reserved</p>
 </footer>
 
 
 <dialog id="welcome-modal" class="modal">
-<div class="modal-box">
+<div class="modal-box border border-base-300">
 <center>
 <img src="/assets/images/solo-leveling-statue-of-god.gif" alt="Solo Leveling"  class="rounded-md" />
-<h3 class="font-bold text-lg">Yōkoso!</h3>
+<h3 class="font-display font-bold text-lg">Yōkoso!</h3>
 <div class="modal-action">
 <form method="dialog">
 <button class="btn">Close</button>
@@ -355,8 +405,15 @@ Drop a Request
 </div>
 </div>
 
-<!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const themeToggles=document.querySelectorAll('.theme-controller');
+function applyTheme(isLight){
+document.documentElement.setAttribute('data-theme',isLight?'cyberapi-light':'cyberapi');
+themeToggles.forEach(c=>{c.checked=isLight});
+}
+themeToggles.forEach(c=>c.addEventListener('change',()=>applyTheme(c.checked)));
+</script>
 <script src="scripts.js"></script>
 </body>
 </html>
