@@ -83,7 +83,7 @@ res.status(500).json({ error: 'fail' })
 
 
 app.get("/", async (req, res) => {
-res.render("index");
+res.json("Hello, World!")
 });
 
 //━━━━━━━━━━━━━━━[ 404 Route ]━━━━━━━━━━━━━━━━━//
