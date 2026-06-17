@@ -2,33 +2,7 @@
 //const modal = document.getElementById('welcome-modal');
 const playlist = [
   'ssstik.io_1749621584342.mp3',
-  'Consume (feat. Goon Des Garcons) - Chase Atlantic.mp3',
-  'Swim - Chase Atlantic.mp3',
-  'Renegade - Aaryan Shah.mp3',
-  'Popular (with Playboi Carti & Madonna) - From The Idol Vol. 1 (Music from the HBO Original Series) - The Weeknd.mp3',
-  'Die For You - The Weeknd.mp3',
-  'Dangerous Woman - Ariana Grande.mp3',
-  'YAD - Vanna Rainelle.mp3',
-  'I Was Never There - The Weeknd.mp3',
-  'Timeless (feat Playboi Carti) - The Weeknd.mp3',
-  'On That Time - Playboi Carti.mp3',
-  'One Of The Girls (with JENNIE, Lily Rose Depp) - The Weeknd.mp3',
-  'The Hills - The Weeknd.mp3',
-  'Good For You - Selena Gomez.mp3',
-  'Starboy - The Weeknd.mp3',
-  'Rodeo (Remix) - Lah Pat.mp3',
-  'Shameless - Camila Cabello.mp3',
-  'Flawlëss (feat. Lil Uzi Vert) - Yeat.mp3',
-  'IDGAF (feat. Yeat) - Drake.mp3',
-  'If We Being Rëal - Yeat.mp3',
-  'Ransom - Lil Tecca.mp3',
-  'FE!N (feat. Playboi Carti) - Travis Scott.mp3',
-  'Hope - XXXTENTACION.mp3',
-  'Sky - Playboi Carti.mp3',
-  'Monëy so big - Yeat.mp3',
-  'Lucid Dreams - Juice WRLD.mp3',
-  "God's Plan - Drake.mp3",
-  'Reminder - The Weeknd.mp3',
+  'MATUSHKA ULTRAFUNK - satirin.mp3'
 ];
 let currentTrack = 0;
 const audio = new Audio(`/assets/audio/${playlist[currentTrack]}`);
